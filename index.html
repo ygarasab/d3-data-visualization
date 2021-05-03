@@ -16,9 +16,11 @@
 
 
     <script src="scripts/issue1.js"></script>
+    <script src="scripts/issue2.js"></script>
     <script>
         d3.csv("data/data.csv", data => {
-            gdpIndicatorArray(data)
+            //getIndicatorToGdpCorrelationPerCountry([...data], data.columns, "Rural population (% of total population)")
+            getAgricultureIndicatorsOverTime([...data])
         });
     </script>
 </body>
