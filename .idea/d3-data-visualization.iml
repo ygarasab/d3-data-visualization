@@ -11,5 +11,9 @@
     <orderEntry type="library" name="d3.v4" level="application" />
     <orderEntry type="library" name="d3-scale-chromatic.v1" level="application" />
     <orderEntry type="library" name="d3-geo-projection.v2" level="application" />
+    <orderEntry type="library" name="d3.v6" level="application" />
+    <orderEntry type="library" name="d3RangeSlider" level="application" />
+    <orderEntry type="library" name="d3-simple-slider" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
   </component>
 </module>

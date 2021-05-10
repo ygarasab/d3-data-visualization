@@ -2,26 +2,122 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
     <title>Document</title>
     <script src="scripts/statistics.min.js"></script>
-    <script src="https://d3js.org/d3.v4.js"></script>
+    <script type="text/javascript" src="http://d3js.org/d3.v4.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+    <script src="https://cdn.rawgit.com/RasmusFonseca/d3RangeSlider/master/d3RangeSlider.js"></script>
+    <script src="https://unpkg.com/d3-simple-slider"></script>
+
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+            integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+            crossorigin="anonymous"
+    />
+
+
+    <!-- Range slider style -->
+    <link href="https://cdn.rawgit.com/RasmusFonseca/d3RangeSlider/master/d3RangeSlider.css" rel="stylesheet">
+
+    <style type="text/css">
+        #slider-container {
+            position: relative;
+            height:30px;
+            background-color: #eeeef5;
+        }
+        body{
+            font-family: arial,sans-serif;
+        }
+        .issueTrigger{
+            background: black;
+            color: white;
+            padding: 15px;
+            margin: 2px;
+            transition : .5s;
+        }
+
+        .issueTrigger:hover{
+            opacity: .8;
+            cursor: pointer;
+        }
+
+        .hidden {
+            display: none;
+        }
+        div.tooltip {
+            color: #222;
+            background-color: #fff;
+            padding: .5em;
+            text-shadow: #f5f5f5 0 1px 0;
+            border-radius: 2px;
+            opacity: 0.9;
+            position: absolute;
+        }
+    </style>
+
 
 </head>
 <body>
-    <svg id="my_dataviz" width="900" height="700"></svg>
+
+
+    <div id="issue1" style="display: none">
+        <p id="bar-label" style="text-align: center; margin: 10px; margin-top: 40px">
+            Coeficientes de relação entre indicadores e Pib
+        </p>
+        <div id="issue1bars"></div>
+        <p id="map-label" style="text-align: center; margin: 10px">Mapa</p>
+        <svg id="issue1map" width="1300" height="500"></svg>
+    </div>
+
+
+    <div id="issue2" style="display: none">
+        <svg id="issue2electricity" width="600" height="550"></svg>
+        <svg id="issue2agriculture" width="600" height="550"></svg>
+        <p></p> <p></p>
+        <div id="slider-container" style="margin-left: 40px; margin-right: 40px"></div>
+        <p id="range-label" style="text-align: center">0 - 10000</p>
+
+    </div>
+
+    <div id="issue3" style="display: block">
+        <p></p><p></p><p></p>
+        <svg id="issue3map-birth" width="664" height="500"></svg>
+        <svg id="issue3map-death" width="664" height="500"></svg>
+<p></p>
+            <div style="text-align: center">Taxas de natalidade (para cada 1000 habitantes) e mortalidade (para cada 1000 nascimentos) no ano de <span  id="value-step"></span></div>
+
+            <div style="display: block; width:1200px; margin:auto;"><div id="slider-step"></div></div>
+
+    </div>
 
 
     <script src="scripts/issue1.js"></script>
     <script src="scripts/issue2.js"></script>
+    <script src="scripts/issue3.js"></script>
+    <script src="scripts/main.js"></script>
+
+    <div id="menu" style="
+        display: block;
+        position: fixed;
+        float: left;
+        top: 300px;
+       ">
+        <div onclick="render(1)" class="issueTrigger" id="issue1trigger">
+            1
+        </div>
+        <div onclick="render(2)" class="issueTrigger" id="issue2trigger">
+            2
+        </div>
+        <div onclick="render(3)" class="issueTrigger" id="issue3trigger">
+            3
+        </div>
+    </div>
     <script>
-        d3.csv("data/data.csv", data => {
-            //getIndicatorToGdpCorrelationPerCountry([...data], data.columns, "Rural population (% of total population)")
-            getAgricultureIndicatorsOverTime([...data])
-        });
+
     </script>
 </body>
 </html>
